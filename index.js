@@ -56,10 +56,7 @@ export default function(options, storage, key) {
     const savedState = shvl.get(options, 'getState', getState)(key, storage);
 
     if (typeof savedState === 'object' && savedState !== null) {
-      store.replaceState(merge(store.state, savedState, {
-        arrayMerge: options.arrayMerger || function (store, saved) { return saved },
-        clone: false,
-      }));
+      store.replaceState(options.arrayMerger || function (store, saved) { return saved });
     }
 
     (options.subscriber || subscriber)(store)(function(mutation, state) {
