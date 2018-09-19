@@ -1,4 +1,3 @@
-import merge from 'deepmerge';
 import * as shvl from 'shvl';
 
 export default function(options, storage, key) {
